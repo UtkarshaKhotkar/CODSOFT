@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 150px;
+
+    }
+    input, button {
+      margin: 15px;
+      padding: 20px;
+      font-size: 26px;
+      
+    }
+    .calculator {
+      border: 2px solid #616060;
+      border-radius: 50px;
+      padding: 5px;
+      display: inline-block;
+      background-color: rgb(74, 73, 73);
+      border: 5px solid black;
+    }
+  </style>
+</head>
+<body>
+    <div class="calculator">
+
+  <h2>Calculator</h2>
+
+  <input type="text" id="display" disabled>
+  <br>
+
+  
+
+  <button onclick="appendToDisplay('/')" style="border-radius: 50px;">/</button>
+ 
+  <button onclick="appendToDisplay('+')" style="border-radius: 50px;">+</button>
+  <button onclick="appendToDisplay('-')" style="border-radius: 50px;">-</button>
+  <button onclick="appendToDisplay('*')" style="border-radius: 50px;">*</button>
+
+  <br>
+  <button onclick="appendToDisplay('7')">7</button>
+  <button onclick="appendToDisplay('8')">8</button>
+  <button onclick="appendToDisplay('9')">9</button>
+  <button onclick="appendToDisplay('+')" style="border-radius: 50px;" >+</button>
+  
+ <br>
+  <button onclick="appendToDisplay('4')">4</button>
+  <button onclick="appendToDisplay('5')">5</button>
+  <button onclick="appendToDisplay('6')">6</button>
+  <button onclick="percentage()"style="border-radius: 50px;">%</button>
+  
+  
+  <br>
+  
+  <button onclick="appendToDisplay('1')">1</button>
+  <button onclick="appendToDisplay('2')">2</button>
+  <button onclick="appendToDisplay('3')">3</button>
+  <button onclick="calculate()" style="border-radius: 50px;" >=</button>
+  
+
+ 
+  <br>
+  <button onclick="backspace()" style="border-radius: 50px;" >←</button>
+  <button onclick="appendToDisplay('0')">0</button>
+  <button onclick="appendToDisplay('.')" style="border-radius: 50px;">.</button>
+  
+  <button onclick="clearDisplay()" style="border-radius: 50px;">C</button>
+  
+  <br>
+
+ 
+  
+  
+ 
+</div>
+  <script>
+    function appendToDisplay(value) {
+      document.getElementById('display').value += value;
+    }
+
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+    }
+    function backspace() {
+        let currentDisplay = document.getElementById('display').value;
+        document.getElementById('display').value = currentDisplay.slice(0, -1);
+      }
+
+
+    function calculate() {
+      try {
+        document.getElementById('display').value = eval(document.getElementById('display').value);
+      } catch (error) {
+        document.getElementById('display').value = 'Error';
+      }
+    }
+   
+    function percentage() {
+        let currentDisplay = document.getElementById('display').value;
+        let result = eval(currentDisplay) / 100;
+    }
+  </script>
+
+</body>
+</html>
